@@ -10,18 +10,16 @@ export default function ChatArea({ text, setText }) {
 
   React.useEffect(() => {
     if (text) {
-      // Add new text as a message from the user
       setMessages((prevMessages) => [
         ...prevMessages,
         { type: "bot", content: text },
       ]);
-      setText(""); // Clear the text after using it
+      setText(""); 
     }
   }, [text, setText]);
 
   return (
     <div className="chat-area">
-      {/* Iterate over messages to display them in a chat format */}
       {messages.map((message, index) => (
         <div
           key={index}
@@ -29,7 +27,6 @@ export default function ChatArea({ text, setText }) {
             message.type === "user" ? "user-message" : "bot-message"
           }`}
         >
-          {/* Render the message content with markdown and syntax highlighting */}
           <ReactMarkdown
             components={{
               code({ node, inline, className, children, ...props }) {
